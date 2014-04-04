@@ -1,18 +1,28 @@
 #ifndef SIMPLETASK_H
 #define SIMPLETASK_H
 #include"allForLibevent.h"
+//#include "response.h"
+class Worker;
 
-class SimpleTask : public Task
+class SimpleTask : public Task, public Outputable
 {
 public:
     SimpleTask(struct bufferevent *buf_ev);
-    void operate(Worker* worker);
-    size_t getClientId();
+    ~SimpleTask(){}
+    virtual void operate(Worker* worker);
+    virtual size_t getClientId();
+
+    // Outputable interface
+    bufferevent *getOutputBuffer();
+
 private:
+    void operateCompliteRequest(std::shared_ptr<Request> request, Worker *worker);
+    void sendResponse(Response* response);
     struct bufferevent *buf_ev;
-    static getId<bufferevent> counter;
+    getId<bufferevent> counter;
+
 };
 
-getId<bufferevent> SimpleTask::counter;
+
 
 #endif // SIMPLETASK_H

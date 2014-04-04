@@ -6,6 +6,12 @@ Worker::Worker()
     sleep();
 }
 
+Worker::~Worker()
+{
+    delete parsedRequestFactory;
+    delete matcher;
+}
+
 void Worker::sleep()
 {
 
@@ -13,15 +19,10 @@ void Worker::sleep()
 
 void Worker::run()
 {
-
-    for(auto it = taskQueque.begin();it<taskQueque.end();)
+    while(1)
     {
-        (*it)->operate(this);
-        {
-            std::lock_guard<std::mutex> guard(taskQuequeBlock);
-            taskQueque.erase(it);
-        }
-        it++;
+        std::shared_ptr<Task*> task = taskQueque.waitAndPop();
+        (*task)->operate(this);
     }
 }
 
@@ -34,24 +35,44 @@ void Worker::addTask(Task *task)
 {
     {
         std::lock_guard<std::mutex> guard(taskQuequeBlock);
-        taskQueque.push_back(task);
+        taskQueque.push(task);
     }
     wakeup();
 }
 
-Request *Worker::getRequest(clientId_t clientId)
+std::shared_ptr<Request> Worker::getRequest(Outputable* output)
 {
-    auto request = clientIdToRequest.find(clientId);
-    if(request == clientIdToRequest.end())
+    auto clIdandReq = clientIdToRequest.find(output->getClientId());
+    if(clIdandReq == clientIdToRequest.end())
     {
-        Request* new_request = new Request;
-        clientIdToRequest.insert({{clientId,new_request}});
+        std::shared_ptr<Request> new_request(new Request_impl(output->getOutputBuffer()));
+        clientIdToRequest.insert({{output->getClientId(),new_request}});
         return new_request;
     }
     else
     {
-        return (*request).second;
+        return (*clIdandReq).second;
     }
+}
+
+ParsedRequestFactory *Worker::getParsedRequestFactory()
+{
+    return parsedRequestFactory;
+}
+
+Matcher *Worker::getMatcher()
+{
+    return matcher;
+}
+
+void Worker::useParsedRequestFactory(ParsedRequestFactory *parsedRequestFactory)
+{
+    this->parsedRequestFactory = parsedRequestFactory;
+}
+
+void Worker::useMatcher(Matcher *matcher)
+{
+    this->matcher = matcher;
 }
 
 int Worker::getRequestNum()
@@ -59,3 +80,5 @@ int Worker::getRequestNum()
 
     return clientIdToRequest.size();
 }
+
+

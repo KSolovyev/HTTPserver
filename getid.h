@@ -45,6 +45,7 @@ private:
 
 
 };
+
 template<typename T>
 size_t getId<T>::maxId = 0;
 
@@ -53,5 +54,6 @@ std::set<size_t> getId<T>::freeId;
 
 template<typename T>
 std::unordered_map<T*,size_t> getId<T>::objectToId;
+
 
 #endif // HASHWRAPPER_H

@@ -1,11 +1,17 @@
 #include "tasker.h"
 
+std::unordered_map<size_t,Worker*> Tasker::clientIdToWorker;
+
 Tasker::Tasker()
 {
 
     for(int i = 0; i < getWorkersCount(); i++)
     {
-
+        Worker * worker = new Worker;
+        worker->useParsedRequestFactory(new CommonParsedRequestFactory);
+        Matcher* matcher = new Matcher_impl;
+        matcher->pushRule(std::shared_ptr<Rule>(new DefaultRule));
+        worker->useMatcher(matcher);
         workers.push_back(new Worker);
 
     }
@@ -15,7 +21,7 @@ Tasker::Tasker()
 void Tasker::pushTask(Task *task)
 {
     Worker* worker = getWorkerResponsableForTask(task);
-    worker->
+    //worker->
 }
 
 Worker *Tasker::getWorkerResponsableForTask(Task* task)
@@ -39,4 +45,9 @@ Worker *Tasker::getNextFreeWorker()
         workerIterator = workers.begin();
     }
     return (*(workerIterator++));
+}
+
+int Tasker::getWorkersCount()
+{
+    return 1;
 }

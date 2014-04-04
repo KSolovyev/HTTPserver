@@ -2,19 +2,20 @@
 #define REQUEST_H
 #include<string>
 #include<memory>
-#include"allForLibevent.h"
+#include <event2/bufferevent.h>
+
 
 class Request
 {
 public:
-    Request();
-    ~Request();
-    bool isReady();
-    void writeBack(std::string&);
-    std::shared_ptr<std::string> getRequestText();
-
-private:
-    std::shared_ptr<std::string> request;
+    Request(){}
+    virtual ~Request(){}
+    virtual bool isReady()=0;
+    virtual void writeBack(std::string &str)=0;
+    virtual void writeBack(const std::string &str)=0;
+    virtual std::shared_ptr<std::string> getRequestText()=0;
+    virtual void setOutputBuffer(struct bufferevent *buf_ev) = 0;
+    virtual struct bufferevent* getOutputBuffer() = 0;
 
 };
 

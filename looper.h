@@ -1,9 +1,10 @@
 #ifndef LOOPER_H
 #define LOOPER_H
-
+#include <event2/util.h>
 #include "allForLibevent.h"
 
-extern struct evbuffer *bufferevent_get_input(struct bufferevent *bufev);
+
+//extern struct evbuffer *bufferevent_get_input(struct bufferevent *bufev);
 
 class Looper
 {

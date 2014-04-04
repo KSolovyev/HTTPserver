@@ -1,6 +1,8 @@
 #ifndef ALLFORLIBEVENT_H
 #define ALLFORLIBEVENT_H
+
 #include <event2/listener.h>
+#include <event2/util.h>
 #include <event2/bufferevent.h>
 #include <event2/buffer.h>
 #include <arpa/inet.h>
@@ -9,10 +11,26 @@
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
+#include "settings.h"
 #include "getid.h"
-#include "task.h"
-#include "simpletask.h"
+#include "threadsafe_queque.h"
+#include "looper.h"
+#include "outputable.h"
 #include "request.h"
+#include "request_impl.h"
+#include "parsedrequest.h"
+#include "response.h"
+#include "response200.h"
+#include "parsedrequest_impl.h"
+#include "parsedrequestfactory.h"
+#include "commonparsedrequestfactory.h"
+#include "task.h"
+#include "rule.h"
+#include "defaultrule.h"
+#include "matcher.h"
+#include "matcher_impl.h"
 #include "worker.h"
+#include "simpletask.h"
+#include "tasker.h"
 
 #endif // ALLFORLIBEVENT_H
