@@ -2,7 +2,7 @@
 
 
 
-ParsedRequest_impl::ParsedRequest_impl(std::shared_ptr<Request> request):valid(false), request(request), errorCode(Settings::errors::NO_ERROR)
+ParsedRequest_impl::ParsedRequest_impl(std::shared_ptr<Request> request):valid(false),errorCode(Settings::errors::NO_ERROR), request(request)
 {
     parse();
 }
@@ -14,7 +14,7 @@ void ParsedRequest_impl::parse() throw(WrongRequestFormat)
     std::string firstLine = query->substr(0,query->find("\n"));
 
     boost::smatch splited;
-    boost::regex re("([^ ]*) ([^ ]*) HTTP\/(1.[10])");
+    boost::regex re("([^ ]*) ([^ ]*) HTTP/(1.[10])");
 
     if(!boost::regex_search (firstLine,splited,re))
     {
@@ -28,10 +28,11 @@ void ParsedRequest_impl::parse() throw(WrongRequestFormat)
     http_version = splited[3];
 
     std::string body = query->substr(query->find("\n")+1);
-    re.assign("(.*): (.*)\n");
+    re.assign("(.*): (.+?)$");
 
-    while (boost::regex_search (splited.suffix().str(),splited,re)) {
+    while (boost::regex_search (body,splited,re)) {
         requestFields.insert({splited[1],splited[2]});
+        body = splited.suffix().str();
     }
 
     validate();
@@ -67,6 +68,7 @@ std::string ParsedRequest_impl::getField(std::string key)
     {
         return (*keyValue).second;
     }
+    return "";
 }
 
 

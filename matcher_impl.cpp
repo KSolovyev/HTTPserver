@@ -17,7 +17,7 @@ std::queue<std::shared_ptr<Rule> > Matcher_impl::matchRequest(std::string url)
 
 void Matcher_impl::pushRule(std::shared_ptr<Rule> rule)
 {
-    rules.push_back(rule);
+    rules.push_front(rule);
 }
 
 void Matcher_impl::execMatchedRules(std::shared_ptr<ParsedRequest> parsedRequest)

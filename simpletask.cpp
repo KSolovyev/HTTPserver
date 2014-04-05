@@ -32,7 +32,7 @@ void SimpleTask::operate(Worker *worker)
 
 void SimpleTask::operateCompliteRequest(std::shared_ptr<Request> request, Worker *worker)
 {
-    ParsedRequestFactory *requestFactory = worker->getParsedRequestFactory();
+    std::shared_ptr<ParsedRequestFactory> requestFactory = worker->getParsedRequestFactory();
     std::shared_ptr<ParsedRequest> parsedRequest(requestFactory->getParsedRequest(request));
 
 }

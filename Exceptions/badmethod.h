@@ -9,7 +9,7 @@ public:
     BadMethod(){}
     ~BadMethod(){}
     virtual const char* what() const throw(){return "Erorr: Bad Method " + getCode();}
-    virtual const int getCode()const {return code;}
+    virtual int getCode()const {return code;}
 private:
     static const int code;
 };

@@ -8,7 +8,7 @@ class WrongRequestFormat : public RootException
 public:
     WrongRequestFormat(){}
     virtual const char* what() const throw(){return "Erorr: Bad request format " + getCode();}
-    virtual const int getCode()const {return code;}
+    virtual int getCode()const {return code;}
 private:
     static const int code;
 };

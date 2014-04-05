@@ -24,14 +24,14 @@ public:
 };
 
 
-TEST_F(getIdTest, getHashTest)
-{
+//TEST_F(getIdTest, getHashTest)
+//{
 
-    EXPECT_EQ(1,getHash(new int));
-    ASSERT_TRUE(getHash(a) == 2);
-    EXPECT_EQ(getHash(a), 2);
-    EXPECT_EQ(getHash(a), 2);
-    EXPECT_EQ(getHash(new int), 3);
-    EXPECT_EQ(getHash(a), 2);
-    EXPECT_EQ(getHash2(a), 2);
-}
+//    EXPECT_EQ(1,getHash(new int));
+//    ASSERT_TRUE(getHash(a) == 2);
+//    EXPECT_EQ(getHash(a), 2);
+//    EXPECT_EQ(getHash(a), 2);
+//    EXPECT_EQ(getHash(new int), 3);
+//    EXPECT_EQ(getHash(a), 2);
+//    EXPECT_EQ(getHash2(a), 2);
+//}

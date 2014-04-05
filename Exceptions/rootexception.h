@@ -8,7 +8,7 @@ public:
     RootException();
     virtual ~RootException() = 0;
     virtual const char* what() const throw(){return "";}
-    virtual const int getCode() const =0;
+    virtual int getCode() const =0;
 };
 
 #endif // ROOTEXCEPTION_H

@@ -21,7 +21,7 @@ Tasker::Tasker()
 void Tasker::pushTask(Task *task)
 {
     Worker* worker = getWorkerResponsableForTask(task);
-    //worker->
+    worker->addTask(task);
 }
 
 Worker *Tasker::getWorkerResponsableForTask(Task* task)

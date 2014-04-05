@@ -13,7 +13,7 @@ public:
     virtual void writeBack(const std::string &str);
     virtual std::shared_ptr<std::string> getRequestText();
     virtual void setOutputBuffer(struct bufferevent *buf_ev);
-    virtual struct bufferevent* getOutputBuffer() throw(RequestHasNoBuffer);
+    virtual struct bufferevent* getOutputBuffer();
 
 private:
     std::shared_ptr<std::string> request;

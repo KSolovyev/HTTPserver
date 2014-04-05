@@ -1,6 +1,7 @@
 #ifndef DEFAULTRULE_H
 #define DEFAULTRULE_H
 #include "allForLibevent.h"
+#include <boost/filesystem.hpp>
 
 class DefaultRule : public Rule
 {

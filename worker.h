@@ -24,15 +24,15 @@ public:
     void useParsedRequestFactory(ParsedRequestFactory* parsedRequestFactory);
     void useMatcher(Matcher* matcher);
     std::shared_ptr<Request> getRequest(Outputable* output);
-    ParsedRequestFactory* getParsedRequestFactory();
-    Matcher* getMatcher();
+    std::shared_ptr<ParsedRequestFactory> getParsedRequestFactory();
+    std::shared_ptr<Matcher> getMatcher();
     int getRequestNum();
 private:
-    Matcher* matcher;
+    std::shared_ptr<Matcher> matcher;
     std::mutex taskQuequeBlock;
     ThreadsafeQueue<Task*> taskQueque;
     std::unordered_map<clientId_t, std::shared_ptr<Request>> clientIdToRequest;
-    ParsedRequestFactory* parsedRequestFactory;
+    std::shared_ptr<ParsedRequestFactory> parsedRequestFactory;
 };
 
 #endif // WORKER_H

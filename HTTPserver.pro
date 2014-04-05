@@ -4,9 +4,12 @@ CONFIG -= app_bundle
 CONFIG -= qt
 LIBS += -levent
 LIBS += -lboost_regex
-
+LIBS += -lboost_filesystem
+LIBS += -lboost_system
+LIBS += -lboost_date_time
 
 INCLUDEPATH += ./Exceptions/
+INCLUDEPATH += ./Responses/
 QMAKE_CXXFLAGS += -std=c++11
 
 SOURCES += main.cpp \
@@ -20,8 +23,7 @@ SOURCES += main.cpp \
     threadsafe_queque.cpp \
     settings.cpp \
     rule.cpp \
-    response200.cpp \
-    response.cpp \
+    Responses/response.cpp \
     request_impl.cpp \
     parsedrequest_impl.cpp \
     parsedrequestfactory.cpp \
@@ -35,7 +37,10 @@ SOURCES += main.cpp \
     Exceptions/badmethod.cpp \
     parsedrequest.cpp \
     Exceptions/requesthasnobuffer.cpp \
-    outputable.cpp
+    outputable.cpp \
+    Responses/responsebuilder.cpp \
+    Responses/responseblank.cpp \
+    Exceptions/badresponse.cpp
 
 HEADERS += \
     looper.h \
@@ -49,8 +54,7 @@ HEADERS += \
     threadsafe_queque.h \
     settings.h \
     rule.h \
-    response200.h \
-    response.h \
+    Responses/response.h \
     request_impl.h \
     parsedrequest_impl.h \
     parsedrequestfactory.h \
@@ -64,7 +68,10 @@ HEADERS += \
     Exceptions/badmethod.h \
     parsedrequest.h \
     Exceptions/requesthasnobuffer.h \
-    outputable.h
+    outputable.h \
+    Responses/responsebuilder.h \
+    Responses/responseblank.h \
+    Exceptions/badresponse.h
 
 OTHER_FILES +=
 

@@ -32,10 +32,7 @@ TEST_F(ParsedRequestTest, FactoryTest)
     std::shared_ptr<ParsedRequest> parsedRequest(factory->getParsedRequest(mockRequestRef));
 
     ASSERT_TRUE((bool)parsedRequest);
-    ASSERT_EQ(parsedRequest->getMethod(),"GET");
-    ASSERT_EQ(parsedRequest->getUrl(),"/someurl/somefile.jpg");
-    ASSERT_EQ(parsedRequest->getHttpVersion(),"1.1");
-    ASSERT_EQ(parsedRequest->getField("HOST"),"localhost");
+
 
 }
 

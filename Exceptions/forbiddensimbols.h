@@ -9,7 +9,7 @@ public:
     ForbiddenSimbols(){}
     ~ForbiddenSimbols(){}
     virtual const char* what() const throw(){return "Erorr: Bad simbols in request " + getCode();}
-    virtual const int getCode()const {return code;}
+    virtual int getCode()const {return code;}
 private:
     static const int code;
 };

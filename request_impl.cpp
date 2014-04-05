@@ -35,7 +35,7 @@ void Request_impl::setOutputBuffer(bufferevent *buf_ev)
     this->buf_ev = buf_ev;
 }
 
-bufferevent *Request_impl::getOutputBuffer() throw(RequestHasNoBuffer)
+bufferevent *Request_impl::getOutputBuffer()
 {
-
+    return buf_ev;
 }

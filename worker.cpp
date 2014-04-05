@@ -8,8 +8,8 @@ Worker::Worker()
 
 Worker::~Worker()
 {
-    delete parsedRequestFactory;
-    delete matcher;
+    //delete parsedRequestFactory;
+    //delete matcher;
 }
 
 void Worker::sleep()
@@ -55,24 +55,24 @@ std::shared_ptr<Request> Worker::getRequest(Outputable* output)
     }
 }
 
-ParsedRequestFactory *Worker::getParsedRequestFactory()
+std::shared_ptr<ParsedRequestFactory> Worker::getParsedRequestFactory()
 {
     return parsedRequestFactory;
 }
 
-Matcher *Worker::getMatcher()
+std::shared_ptr<Matcher> Worker::getMatcher()
 {
     return matcher;
 }
 
 void Worker::useParsedRequestFactory(ParsedRequestFactory *parsedRequestFactory)
 {
-    this->parsedRequestFactory = parsedRequestFactory;
+    this->parsedRequestFactory.reset(parsedRequestFactory);
 }
 
 void Worker::useMatcher(Matcher *matcher)
 {
-    this->matcher = matcher;
+    this->matcher.reset(matcher);
 }
 
 int Worker::getRequestNum()
