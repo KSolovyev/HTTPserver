@@ -87,3 +87,8 @@ std::string ParsedRequest_impl::getHttpVersion()
 {
     return http_version;
 }
+
+std::shared_ptr<Request> ParsedRequest_impl::getRequest()
+{
+    return request;
+}

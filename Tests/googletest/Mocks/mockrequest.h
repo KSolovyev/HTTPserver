@@ -18,6 +18,7 @@ public:
     MOCK_METHOD1(setOutputBuffer, void( bufferevent*));
     MOCK_METHOD0(getOutputBuffer, bufferevent*());
 
+
 };
 
 #endif // MOCKREQUEST_H

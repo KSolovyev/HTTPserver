@@ -14,7 +14,6 @@
 #include "settings.h"
 #include "getid.h"
 #include "threadsafe_queque.h"
-#include "looper.h"
 #include "outputable.h"
 #include "request.h"
 #include "request_impl.h"
@@ -33,5 +32,6 @@
 #include "worker.h"
 #include "simpletask.h"
 #include "tasker.h"
+#include "looper.h"
 
 #endif // ALLFORLIBEVENT_H

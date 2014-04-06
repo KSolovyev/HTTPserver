@@ -14,6 +14,7 @@ public:
     MOCK_METHOD0(getUrl, std::string());
     MOCK_METHOD0(getHttpVersion, std::string());
     MOCK_METHOD1(getField, std::string(std::string));
+    MOCK_METHOD0(getRequest, std::shared_ptr<Request>());
 };
 
 #endif // MOCKPARSEDREQUEST_H

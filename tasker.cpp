@@ -16,6 +16,7 @@ Tasker::Tasker()
 
     }
     workerIterator = workers.begin();
+    (*workerIterator)->run();
 }
 
 void Tasker::pushTask(Task *task)

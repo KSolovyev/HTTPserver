@@ -4,6 +4,7 @@
 #include "allForLibevent.h"
 
 
+class Tasker;
 //extern struct evbuffer *bufferevent_get_input(struct bufferevent *bufev);
 
 class Looper
@@ -14,6 +15,7 @@ public:
 
 private:
     Looper(int port);
+    static Tasker* tasker;
     static void accept_error_cb( struct evconnlistener *listener, void *arg );
     static void accept_connection_cb( struct evconnlistener *listener,
                    evutil_socket_t fd, struct sockaddr *addr, int sock_len,

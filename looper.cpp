@@ -1,5 +1,6 @@
 #include "looper.h"
 
+Tasker* Looper::tasker = new Tasker;
 
 const Looper *Looper::Instance(int port)
 {
@@ -38,6 +39,7 @@ base = event_base_new();
 
 
 
+
 }
 
 
@@ -65,10 +67,13 @@ void Looper::accept_connection_cb( struct evconnlistener *listener,
 
 void Looper::echo_read_cb( struct bufferevent *buf_ev, void *arg )
 {
-  struct evbuffer *buf_input = bufferevent_get_input( buf_ev );
-  struct evbuffer *buf_output = bufferevent_get_output( buf_ev );
+  //struct evbuffer *buf_input = bufferevent_get_input( buf_ev );
+  //struct evbuffer *buf_output = bufferevent_get_output( buf_ev );
+
   /* Данные просто копируются из буфера ввода в буфер вывода */
-  evbuffer_add_buffer( buf_output, buf_input );
+  //evbuffer_add_buffer( buf_output, buf_input );
+
+  tasker->pushTask(new SimpleTask(buf_ev));
 }
 
 void Looper::echo_event_cb( struct bufferevent *buf_ev, short events, void *arg )

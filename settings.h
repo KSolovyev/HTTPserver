@@ -22,6 +22,7 @@ public:
     //static set<std::string> ALLOWED_REQUEST_HEADERS = {};
     static std::string ROOT;
     static std::string SERVER_NAME;
+    static size_t MAX_FILE_SIZE;
 
 };
 

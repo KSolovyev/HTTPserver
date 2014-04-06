@@ -18,6 +18,7 @@ public:
     std::string getMethod();
     std::string getUrl();
     std::string getHttpVersion();
+    std::shared_ptr<Request> getRequest();
 private:
     void parse()throw(WrongRequestFormat);
     void validate() throw (BadMethod, ForbiddenSimbols);

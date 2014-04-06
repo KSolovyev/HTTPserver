@@ -17,7 +17,6 @@ public:
 
 private:
     void operateCompliteRequest(std::shared_ptr<Request> request, Worker *worker);
-    void sendResponse(Response* response);
     struct bufferevent *buf_ev;
     getId<bufferevent> counter;
 

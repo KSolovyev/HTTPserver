@@ -33,7 +33,7 @@ std::shared_ptr<std::string> ResponseBlank::getHeaderText() throw(BadResponse)
 
 std::shared_ptr<std::string> ResponseBlank::getContentText()
 {
-
+    return content;
 }
 std::string ResponseBlank::getHttpVersion() const
 {

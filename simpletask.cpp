@@ -34,13 +34,10 @@ void SimpleTask::operateCompliteRequest(std::shared_ptr<Request> request, Worker
 {
     std::shared_ptr<ParsedRequestFactory> requestFactory = worker->getParsedRequestFactory();
     std::shared_ptr<ParsedRequest> parsedRequest(requestFactory->getParsedRequest(request));
-
+    std::shared_ptr<Matcher> matcher = worker->getMatcher();
+    matcher->execMatchedRules(parsedRequest);
 }
 
-void SimpleTask::sendResponse(Response* response)
-{
-    
-}
 
 size_t SimpleTask::getClientId()
 {
