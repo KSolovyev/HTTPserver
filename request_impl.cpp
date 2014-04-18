@@ -10,7 +10,8 @@ Request_impl::Request_impl(bufferevent *buf_ev):request(std::make_shared<std::st
 bool Request_impl::isReady()
 {
 
-    return request->substr(request->length()-2)=="\n\n";
+    //return request->substr(request->length()-2)=="\r\n";
+    return true;
 }
 
 void Request_impl::writeBack(std::string &str)

@@ -24,6 +24,7 @@ public:
     void useParsedRequestFactory(ParsedRequestFactory* parsedRequestFactory);
     void useMatcher(Matcher* matcher);
     std::shared_ptr<Request> getRequest(Outputable* output);
+    void deleteRequest(clientId_t clientId);
     std::shared_ptr<ParsedRequestFactory> getParsedRequestFactory();
     std::shared_ptr<Matcher> getMatcher();
     int getRequestNum();

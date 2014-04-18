@@ -10,10 +10,14 @@ class Tasker;
 class Looper
 {
 public:
-    static const Looper* Instance(int port);
+    static Looper* getInstance();
+    static void init(int port);
+
+   // static const Looper* Instance(int port);
     void run() const;
 
 private:
+    static Looper* looper;
     Looper(int port);
     static Tasker* tasker;
     static void accept_error_cb( struct evconnlistener *listener, void *arg );

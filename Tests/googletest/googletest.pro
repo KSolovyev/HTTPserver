@@ -54,7 +54,10 @@ SOURCES += \
     ../../Responses/response.cpp \
     ../../Exceptions/badresponse.cpp \
     ../../Exceptions/requesthasnobuffer.cpp \
-    ../../Responses/responsebuilder.cpp
+    ../../Responses/responsebuilder.cpp \
+    defaultruletest.cpp \
+    ../../defaultrule.cpp \
+    ../../rule.cpp
 
 HEADERS += \
     ../../request.h \
@@ -87,7 +90,10 @@ HEADERS += \
     ../../Responses/response.h \
     ../../Exceptions/badresponse.h \
     ../../Exceptions/requesthasnobuffer.h \
-    ../../Responses/responsebuilder.h
+    ../../Responses/responsebuilder.h \
+    defaultruletest.h \
+    ../../defaultrule.h \
+    ../../rule.h
 
 OTHER_FILES +=
 

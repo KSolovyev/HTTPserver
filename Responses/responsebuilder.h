@@ -12,7 +12,7 @@ public:
     std::shared_ptr<ResponseBlank> getResponse200();
     std::shared_ptr<ResponseBlank> getResponse405();
     std::shared_ptr<ResponseBlank> getResponseBlank();
-    std::shared_ptr<ResponseBlank> getResponse403() const;
+    std::shared_ptr<ResponseBlank> getResponse403();
 
 private:
     std::shared_ptr<ResponseBlank> response200;

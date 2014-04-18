@@ -1,11 +1,24 @@
 #include "looper.h"
 
+
+Looper* Looper::looper;
 Tasker* Looper::tasker = new Tasker;
 
-const Looper *Looper::Instance(int port)
+Looper *Looper::getInstance()
 {
-    return new Looper(port);
+//    if(!looper){
+//        looper = new Looper;
+//    }
+    return Looper::looper;
 }
+
+void Looper::init(int port)
+{
+    if(!Looper::looper)
+            Looper::looper = new Looper(port);
+
+}
+
 
 void Looper::run() const
 {

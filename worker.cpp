@@ -55,6 +55,11 @@ std::shared_ptr<Request> Worker::getRequest(Outputable* output)
     }
 }
 
+void Worker::deleteRequest(clientId_t clientId)
+{
+    clientIdToRequest.erase(clientId);
+}
+
 std::shared_ptr<ParsedRequestFactory> Worker::getParsedRequestFactory()
 {
     return parsedRequestFactory;

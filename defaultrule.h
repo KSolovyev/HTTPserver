@@ -14,6 +14,7 @@ public:
     virtual void operateRequest(std::shared_ptr<ParsedRequest> parsedRequest);
 private:
     void sendResponse(std::shared_ptr<ParsedRequest> parsedRequest, std::shared_ptr<Response> response);
+    void sendFile(boost::filesystem::path path, std::shared_ptr<ParsedRequest> parsedRequest);
 };
 
 #endif // DEFAULTRULE_H

@@ -22,6 +22,12 @@ TEST_F(ResponseBlankTest, CreationTest)
     ASSERT_TRUE((bool)responseBlank);
 }
 
+TEST_F(ResponseBlankTest, RegularExpTest)
+{
+   boost::regex ext_re("^.*\.(.*?)$");
+}
+
+
 TEST_F(ResponseBlankTest, FunctionalTest)
 {
     responseBlank->setConnection("close");

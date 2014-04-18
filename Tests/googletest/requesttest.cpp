@@ -5,7 +5,7 @@ class RequestTest: public testing::Test{
 public:
     void SetUp(){
             firstPiece = "GET /index.html";
-            secondPiece = " HTTP/1.1\n\n";
+            secondPiece = " HTTP/1.1\r\n";
             overallPiece=firstPiece + secondPiece;
             request = new Request_impl(NULL);
         }

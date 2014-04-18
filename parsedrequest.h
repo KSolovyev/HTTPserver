@@ -12,6 +12,7 @@ public:
     virtual std::string getField(std::string key)=0;
     virtual std::string getMethod()=0;
     virtual std::string getUrl()=0;
+    virtual std::string getDecodedUrl()=0;
     virtual std::string getHttpVersion()=0;
     virtual std::shared_ptr<Request> getRequest() = 0;
 };

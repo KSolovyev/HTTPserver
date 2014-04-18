@@ -11,6 +11,7 @@ void SimpleTask::operate(Worker *worker)
 
     std::shared_ptr<Request> request = worker->getRequest(this);
     char tmp[128];
+    memset(tmp,0,128);
     std::string tmp_;
     size_t n;
     while (1) {
@@ -25,6 +26,7 @@ void SimpleTask::operate(Worker *worker)
     if (request->isReady())
     {
         operateCompliteRequest(request, worker);
+        worker->deleteRequest(this->getClientId());
     }
 
 

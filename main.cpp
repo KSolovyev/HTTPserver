@@ -14,7 +14,7 @@ int main( int argc, char **argv )
     fprintf( stderr, "Задан некорректный номер порта.\n" );
     return -1;
   }
-  const Looper* looper = Looper::Instance(port);
-  looper->run();
+  Looper::init(port);
+  Looper::getInstance()->run();
   //ParsedRequest* pr = new ParsedRequest_impl;
 }
