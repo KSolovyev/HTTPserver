@@ -25,6 +25,7 @@ private:
                    evutil_socket_t fd, struct sockaddr *addr, int sock_len,
                    void *arg );
     static void echo_read_cb( struct bufferevent *buf_ev, void *arg );
+    static void echo_write_cb( struct bufferevent *buf_ev, void *arg );
     static void echo_event_cb( struct bufferevent *buf_ev, short events, void *arg );
 
     struct event_base *base;

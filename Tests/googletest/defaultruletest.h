@@ -8,5 +8,7 @@
 #include <list>
 #include <gmock/gmock.h>
 #include "mockparsedrequest.h"
+#include <boost/filesystem.hpp>
+#include <iostream>
 
 #endif // DEFAULTRULETEST_H

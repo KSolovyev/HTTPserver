@@ -23,8 +23,8 @@ std::shared_ptr<std::string> ResponseBlank::getHeaderText() throw(BadResponse)
             "Date: " + getCurrentDate()+"\n"+
             "Content-Type: " + contentType + "\n"+
             "Content-Length: " + std::to_string(content->length())+"\n"+
-            (connection==""?"Connection: close":"Connection: " + connection)+"\n"+
-            "\n";
+            (connection==""?"Connection: close":"Connection: " + connection)+"\r"+ "\n"+
+            "\r" + "\n";
 
     return responseText;
 

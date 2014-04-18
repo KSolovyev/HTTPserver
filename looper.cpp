@@ -74,8 +74,13 @@ void Looper::accept_connection_cb( struct evconnlistener *listener,
   struct event_base *base = evconnlistener_get_base( listener );
   struct bufferevent *buf_ev = bufferevent_socket_new( base, fd, BEV_OPT_CLOSE_ON_FREE );
 
-  bufferevent_setcb( buf_ev, echo_read_cb, NULL, echo_event_cb, NULL );
-  bufferevent_enable( buf_ev, (EV_READ | EV_WRITE) );
+  bufferevent_setcb( buf_ev, echo_read_cb, echo_write_cb, echo_event_cb, NULL );
+  bufferevent_enable( buf_ev, (EV_READ ) );
+  struct timeval five_sec;
+  five_sec.tv_sec = 5;
+  five_sec.tv_usec = 0;
+  bufferevent_set_timeouts(buf_ev,NULL,&five_sec);
+
 }
 
 void Looper::echo_read_cb( struct bufferevent *buf_ev, void *arg )
@@ -89,10 +94,17 @@ void Looper::echo_read_cb( struct bufferevent *buf_ev, void *arg )
   tasker->pushTask(new SimpleTask(buf_ev));
 }
 
+void Looper::echo_write_cb( struct bufferevent *buf_ev, void *arg )
+{
+   // bufferevent_free(buf_ev);
+}
+
 void Looper::echo_event_cb( struct bufferevent *buf_ev, short events, void *arg )
 {
   if( events & BEV_EVENT_ERROR )
-    perror( "Ошибка объекта bufferevent" );
+      perror( "Ошибка объекта bufferevent" );
   if( events & (BEV_EVENT_EOF | BEV_EVENT_ERROR) )
-    bufferevent_free( buf_ev );
+      bufferevent_free( buf_ev );
+  if(events & (BEV_EVENT_TIMEOUT|BEV_EVENT_WRITING))
+      bufferevent_free( buf_ev );
 }

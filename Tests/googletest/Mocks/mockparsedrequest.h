@@ -12,6 +12,7 @@ public:
     MOCK_METHOD0(isValid, bool());
     MOCK_METHOD0(getMethod, std::string());
     MOCK_METHOD0(getUrl, std::string());
+    MOCK_METHOD0(getDecodedUrl, std::string());
     MOCK_METHOD0(getHttpVersion, std::string());
     MOCK_METHOD1(getField, std::string(std::string));
     MOCK_METHOD0(getRequest, std::shared_ptr<Request>());

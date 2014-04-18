@@ -1,6 +1,7 @@
 #ifndef SIMPLETASK_H
 #define SIMPLETASK_H
 #include"allForLibevent.h"
+#include "badmethod.h"
 //#include "response.h"
 class Worker;
 

@@ -14,7 +14,9 @@ void ParsedRequest_impl::parse() throw(WrongRequestFormat)
     std::string firstLine = query->substr(0,query->find("\n"));
 
     boost::smatch splited;
-    boost::regex re("([^ ]*) ([^ ]*) HTTP/(1.[10])");
+    boost::regex re("([^ ]*) (.*) HTTP/(1.[10])");
+
+    firstLine = UriDecode(firstLine);
 
     if(!boost::regex_search (firstLine,splited,re))
     {
@@ -61,7 +63,7 @@ void ParsedRequest_impl::validate() throw (BadMethod, ForbiddenSimbols)
     if(Settings::ALLOWED_METHODS.find(method) == Settings::ALLOWED_METHODS.end())
     {
         valid = false;
-        throw BadMethod();
+        //throw BadMethod();
     }
     valid = true;
 }

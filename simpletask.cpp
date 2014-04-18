@@ -35,9 +35,18 @@ void SimpleTask::operate(Worker *worker)
 void SimpleTask::operateCompliteRequest(std::shared_ptr<Request> request, Worker *worker)
 {
     std::shared_ptr<ParsedRequestFactory> requestFactory = worker->getParsedRequestFactory();
-    std::shared_ptr<ParsedRequest> parsedRequest(requestFactory->getParsedRequest(request));
-    std::shared_ptr<Matcher> matcher = worker->getMatcher();
-    matcher->execMatchedRules(parsedRequest);
+    try
+    {
+        std::shared_ptr<ParsedRequest> parsedRequest(requestFactory->getParsedRequest(request));
+        std::shared_ptr<Matcher> matcher = worker->getMatcher();
+        matcher->execMatchedRules(parsedRequest);
+    }
+    catch(BadMethod ex)
+    {
+
+    }
+
+
 }
 
 

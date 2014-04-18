@@ -53,5 +53,6 @@ Worker *Tasker::getNextFreeWorker()
 
 int Tasker::getWorkersCount()
 {
-    return std::thread::hardware_concurrency()>2?std::thread::hardware_concurrency():2;
+   return 1;
+    // return std::thread::hardware_concurrency()>2?std::thread::hardware_concurrency():2;
 }
